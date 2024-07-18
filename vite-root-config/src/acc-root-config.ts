@@ -9,15 +9,6 @@ registerApplication(
 );
 
 registerApplication({
-  name: "@single-spa/welcome",
-  app: () =>
-    System.import<LifeCycles>(
-      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
-    ),
-  activeWhen: ["/welcome"],
-});
-
-registerApplication({
   name: "@acc/profile",
   app: () =>
     System.import<LifeCycles>(
@@ -43,15 +34,6 @@ registerApplication({
       "@acc/orders"
     ),
   activeWhen: ["/orders"],
-});
-
-registerApplication({
-  name: "@acc/app",
-  app: () =>
-    System.import<LifeCycles>(
-      "@acc/app"
-    ),
-  activeWhen: ["/app"],
 });
 
 setTimeout(() => {

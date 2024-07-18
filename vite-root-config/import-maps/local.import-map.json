@@ -7,7 +7,6 @@
         "@acc/profile":"http://localhost:8500/acc-profile.js",
         "@acc/address": "http://localhost:8600/acc-address.js",
         "@acc/orders":"http://localhost:5173/src/acc-orders.tsx",
-        "@acc/app":"http://localhost:3006/src/main.ts",
         "@acc/api":"http://localhost:5174/src/acc-api.ts"
     }
 }
