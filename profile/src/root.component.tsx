@@ -1,7 +1,15 @@
 import './style.css';
 import reactLogo from './assets/react.svg'
+import {getProfileDetails} from '@acc/api';
+import { useEffect } from 'react';
 
 export default function Root(props) {
+
+  useEffect(()=>{
+   const profileData = getProfileDetails();
+   console.log(profileData);
+  },[]);
+
   return (
     <div id="profile">
       <section>Profile app is mounted!</section>

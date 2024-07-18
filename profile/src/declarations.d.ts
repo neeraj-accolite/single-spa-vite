@@ -37,3 +37,11 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+
+
+declare module "@acc/api" {
+  const getProfileDetails: () => {
+    name: string;
+    email: string;
+  };
+}
