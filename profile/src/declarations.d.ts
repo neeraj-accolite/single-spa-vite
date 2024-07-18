@@ -40,8 +40,14 @@ declare module "*.svg" {
 
 
 declare module "@acc/api" {
-  const getProfileDetails: () => {
-    name: string;
+  export interface Profile {
+    avatar: string;
     email: string;
-  };
+    id: number;
+    first_name: string;
+    last_name: string;
+  }
+  const getProfileDetails: (url: string) => Promise<{
+    data: Profile;
+  }>;
 }
