@@ -1,0 +1,22 @@
+#header {
+  background-color: darkkhaki;
+  width: 100vh;
+  height: 150px;
+  align-content: center;
+}
+
+ul#menu li{
+  display: inline;
+}
+
+li {
+  color: white;
+  margin-bottom: 5px;
+  margin:10px;
+  font-size: 20px;
+  /* margin-top: 5px; */
+}
+
+a#menu {
+  color: white;  
+}

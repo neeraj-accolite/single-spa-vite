@@ -1,0 +1,61 @@
+import { registerApplication, start, LifeCycles } from "single-spa";
+import { bootstrap, mount, unmount } from './root.component';
+
+registerApplication(
+  'root-app',
+  () => import('./root.component'),
+  () => true,
+  { bootstrap, mount, unmount }
+);
+
+registerApplication({
+  name: "@single-spa/welcome",
+  app: () =>
+    System.import<LifeCycles>(
+      "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js"
+    ),
+  activeWhen: ["/welcome"],
+});
+
+registerApplication({
+  name: "@acc/profile",
+  app: () =>
+    System.import<LifeCycles>(
+      "@acc/profile"
+    ),
+  activeWhen: ["/profile"],
+});
+
+
+registerApplication({
+  name: "@acc/address",
+  app: () =>
+    System.import<LifeCycles>(
+      "@acc/address"
+    ),
+  activeWhen: ["/address"],
+});
+
+registerApplication({
+  name: "@acc/orders",
+  app: () =>
+    System.import<LifeCycles>(
+      "@acc/orders"
+    ),
+  activeWhen: ["/orders"],
+});
+
+registerApplication({
+  name: "@acc/app",
+  app: () =>
+    System.import<LifeCycles>(
+      "@acc/app"
+    ),
+  activeWhen: ["/app"],
+});
+
+setTimeout(() => {
+  start({
+    urlRerouteOnly: true,
+  });
+}, 1000);

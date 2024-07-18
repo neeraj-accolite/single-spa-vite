@@ -1,0 +1,12 @@
+{
+    "imports": {
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@5.9.0/lib/system/single-spa.min.js",
+        "react": "https://unpkg.com/react@18.3.1/umd/react.development.js",
+        "react-dom": "https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js",
+        "@acc/root-config": "//localhost:9000/src/acc-root-config.ts",
+        "@acc/profile":"http://localhost:8500/acc-profile.js",
+        "@acc/address": "http://localhost:8600/acc-address.js",
+        "@acc/orders":"http://localhost:5173/src/acc-orders.tsx",
+        "@acc/app":"http://localhost:3006/src/main.ts"
+    }
+}
