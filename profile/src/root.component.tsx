@@ -24,10 +24,13 @@ export default function Root(props) {
 
   return (
     <div id="profile">
-      <h1> Profile Heading </h1>
+      <h1> Profile React Application </h1>
       {
         (data===null && !isLoading ) ?     
-          <div id="detailsBtn"><button onClick={onFetchDetails}>Load Profile Details</button></div>
+          <div id="detailsBtn">
+            <button onClick={onFetchDetails}>Load Profile Details</button>
+            <label id="value" >  (The details will be fetched from Utility Microfrontend)</label>
+          </div>
         :
         <div>
           {
