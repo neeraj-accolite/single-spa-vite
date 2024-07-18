@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import Parcel from 'single-spa-react/parcel'
 import './App.css'
-import logo from './assets/image.png';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -14,6 +11,12 @@ function App() {
       <div>
         <a href='/profile'>Go to Profile</a>
       </div>
+      <Parcel
+        config={()=>System.import("@acc/helpdesk")}
+        initiator= {"Order Application"}
+        wrapWith='div'
+        wrapStyle={{position:'absolute', bottom:20, right:20}}
+       />
     </div>
     </>
   )

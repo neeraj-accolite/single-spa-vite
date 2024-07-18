@@ -1,5 +1,5 @@
 {
-  "name": "vite-orders",
+  "name": "helpdesk-parcel",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,12 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/systemjs": "^6.13.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "single-spa": "^6.0.1",
     "single-spa-react": "^6.0.1",
-    "systemjs": "^6.15.1",
     "vite-plugin-externalize-dependencies": "^0.13.0",
     "vite-plugin-single-spa": "^0.7.0"
   },

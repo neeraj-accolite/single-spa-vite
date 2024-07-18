@@ -1,7 +1,8 @@
 import './style.css';
-import reactLogo from './assets/react.svg'
 import {getProfileDetails, Profile} from '@acc/api';
 import { useState } from 'react';
+import { CustomProps, ParcelConfig, ParcelProps } from 'single-spa';
+import Parcel, { ParcelCompProps } from 'single-spa-react/parcel'
 
 export default function Root(props) {
   const [isLoading, setLoading] = useState<Boolean>(false);
@@ -14,10 +15,12 @@ export default function Root(props) {
       const profileData = await getProfileDetails("https://reqres.in/api/users/5");
       setData(profileData.data);
       setLoading(false);
-    },500);
-    
+    },500);  
   }
 
+  const ParcelComponent = (): ParcelConfig<{}>=>{
+    return System.import("@acc/helpdesk") as unknown as ParcelConfig<{}>;
+  }
 
   return (
     <div id="profile">
@@ -53,6 +56,13 @@ export default function Root(props) {
           }
         </div>
       }
+
+      <Parcel
+        config={ParcelComponent()}
+        initiator= {"Profile Application"}
+        wrapWith='div'
+        wrapStyle={{position:'absolute', bottom:20, right:20}}
+       />
       
     </div>
 );
