@@ -1,9 +1,9 @@
 import { registerApplication, start, LifeCycles } from "single-spa";
-import { bootstrap, mount, unmount } from './root.component';
+import { bootstrap, mount, unmount } from './header/acc-header';
 
 registerApplication(
   'root-app',
-  () => import('./root.component'),
+  () => import('./header/acc-header'),
   () => true,
   { bootstrap, mount, unmount }
 );

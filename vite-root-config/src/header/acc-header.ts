@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import singleSpaReact from 'single-spa-react';
-import App from './App';
+import Header from './Header';
 
 const reactLifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: App,
+  rootComponent: Header,
 });
 export const { bootstrap, mount, unmount } = reactLifecycles;

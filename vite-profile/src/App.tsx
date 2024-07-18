@@ -1,10 +1,10 @@
 import './style.css';
-import {getProfileDetails, Profile} from '@acc/api';
 import { useState } from 'react';
 import { CustomProps, ParcelConfig, ParcelProps } from 'single-spa';
-import Parcel, { ParcelCompProps } from 'single-spa-react/parcel'
+import Parcel from 'single-spa-react/parcel'
+import {getProfileDetails, Profile} from '@acc/api';
 
-export default function Root(props) {
+export default function Root(props:any) {
   const [isLoading, setLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Profile>(null);
 
