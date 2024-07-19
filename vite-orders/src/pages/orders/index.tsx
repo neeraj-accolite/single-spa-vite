@@ -26,6 +26,10 @@ function App(props) {
       window.dispatchEvent(event);
       setLoading(false);
     },500);  
+
+    return ()=>{
+      window.dispatchEvent(new CustomEvent('profile-order-fetched',{ detail: null}));
+    }
   },[]);
 
   

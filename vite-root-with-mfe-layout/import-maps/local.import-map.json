@@ -8,7 +8,7 @@
         "@acc/footer":"//localhost:9001/src/header/acc-footer.ts",
         "@acc/profile":"http://localhost:5172/src/acc-profile.ts",
         "@acc/address": "http://localhost:8600/src/acc-address.ts",
-        "@acc/orders":"http://localhost:5173/src/acc-orders.ts",
+        "@acc/orders":"http://localhost:5173/src/acc-orders.tsx",
         "@acc/api":"http://localhost:5174/src/acc-api.ts",
         "@acc/helpdesk":"http://localhost:5175/src/acc-helpdesk.tsx"
     }

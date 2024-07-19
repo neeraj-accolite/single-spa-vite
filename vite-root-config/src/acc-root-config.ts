@@ -36,8 +36,6 @@ registerApplication({
   activeWhen: ["/orders/:id"]
 });
 
-setTimeout(() => {
-  start({
-    urlRerouteOnly: true,
-  });
-}, 1000);
+start({
+  urlRerouteOnly: true,
+});

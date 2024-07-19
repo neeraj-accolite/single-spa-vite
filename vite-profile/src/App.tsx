@@ -1,10 +1,11 @@
 import './style.css';
 import { useState } from 'react';
-import { CustomProps, ParcelConfig, ParcelProps } from 'single-spa';
+import { CustomProps, getAppNames, getAppStatus, navigateToUrl, ParcelConfig, ParcelProps } from 'single-spa';
 import Parcel from 'single-spa-react/parcel'
 import {getAllUsers, Profile} from '@acc/api';
 
 export default function Root(props:any) {
+
   const [isLoading, setLoading] = useState<Boolean>(false);
   const [data, setData] = useState<Profile[]>(null);
 
@@ -16,6 +17,10 @@ export default function Root(props:any) {
       setData(profileData.data);
       setLoading(false);
     },500);  
+  }
+
+  const onNavigate = (path)=>{
+    navigateToUrl(path);
   }
 
   const ParcelComponent = (): ParcelConfig<{}>=>{
@@ -55,7 +60,7 @@ export default function Root(props:any) {
                   <label id="value">{user.email}</label>
                 </div>
                 <div id="detailSection">
-                  <a href={`/orders/${user.id}`}>Open Orders</a>
+                  <a href='javascript:void(0);' onClick={()=>onNavigate(`/orders/${user.id}`)}>Open Orders</a>
               </div>
              </div>  
             )
