@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 
 function App(props) {
   const [isLoading, setLoading] = useState<Boolean>(true);
-  const [isOrderLoading, setOrderLoading] = useState<Boolean>(false);
   const [user, setData] = useState<Profile | null>(null);
   const [orders, setOrders] = useState<OrderDetail | null>(null);
   const params = useParams<{id:string}>();
@@ -15,11 +14,17 @@ function App(props) {
       //set time out added to get the loading effects 
       const profileData = await getProfileDetails(Number(params.id));
       setData(profileData.data);
-      setLoading(false);
-      setOrderLoading(true);
       const orderData = await getOrderDetails(Number(params.id));
       setOrders(orderData);
-      setOrderLoading(false);
+      const event = new CustomEvent('profile-order-fetched',{
+        detail:{
+          user: profileData.data,
+          qty: orderData.totalQuantity,
+          price: orderData.total
+        }
+      });
+      window.dispatchEvent(event);
+      setLoading(false);
     },500);  
   },[]);
 
@@ -31,35 +36,14 @@ function App(props) {
       <div>
         {
         isLoading?
-          <div id="loader"></div>
-        :
-        <div className='users'>
-            <div id="detailSection">
-              <img src={user?.avatar} width={80} height={80} />
-            </div>
-            <div id="detailSection">
-            <label id="field">Name:
-              </label>
-              <label id="value">
-              {user?.first_name} {user?.last_name}
-              </label>
-            </div>
-            <div id="detailSection">
-              <label id="field">Email:</label> 
-              <label id="value">{user?.email}</label>
-            </div>
-          </div> 
-        }
-        {
-        isOrderLoading?
           <div id="loader" style={{marginTop:'30px', marginBottom:'30px'}}></div>
         :
         orders?.products && 
         orders.products.map(order=>{
           return(
-            <div style={{marginTop:'30px'}}>
+            <div style={{marginTop:'30px'}} key={order.id}>
             <label style={{fontSize:'20px', fontWeight:'bold'}}>{user?.first_name}'s Orders</label>
-            <div className='users' key={order.id}>
+            <div className='users' >
               <div id="detailSection">
                 <img src={order?.thumbnail} width={80} height={80} />
               </div>

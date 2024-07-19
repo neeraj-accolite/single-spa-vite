@@ -38,7 +38,7 @@ export default {
 <template>
    <div>
     <h2>Address Application In the VueJS Framework</h2>
-    <a href="/orders" >
+    <a href="/orders/1" >
         Load Orders Page
       </a>
     <div>
