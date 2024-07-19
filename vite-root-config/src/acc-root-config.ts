@@ -14,7 +14,7 @@ registerApplication({
     System.import<LifeCycles>(
       "@acc/profile"
     ),
-  activeWhen: ["/profile"],
+  activeWhen: ["/profiles"],
 });
 
 
@@ -33,7 +33,7 @@ registerApplication({
     System.import<LifeCycles>(
       "@acc/orders"
     ),
-  activeWhen: ["/orders"],
+  activeWhen: ["/orders/:id"]
 });
 
 setTimeout(() => {

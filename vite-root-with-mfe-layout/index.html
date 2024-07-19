@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/system.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/systemjs@6.8.3/dist/extras/amd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/regenerator-runtime@0.13.7/runtime.min.js"></script>
+    <script type="systemjs-importmap" src="./import-map.json"></script>
     <script type="systemjs-importmap" src="../../import-map.json"></script>
     <script
       type="text/javascript"
@@ -72,5 +73,23 @@
     <script type="module">
       System.import("@acc/root-config");
     </script>
+    <template id="single-spa-layout">
+      <single-spa-router>
+        <div>
+          <application name="@acc/header"></application>
+        </div>
+        <main>
+          <route path="profiles" >
+            <application name="@acc/profile"></application>
+          </route>
+          <route path="address">
+            <application name="@acc/address"></application>
+          </route>
+          <route path="orders/:id">
+            <application name="@acc/orders"></application>
+          </route>
+        </main>
+      </single-spa-router>
+    </template>
   </body>
 </html>

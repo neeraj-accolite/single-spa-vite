@@ -3,6 +3,11 @@ import react from '@vitejs/plugin-react'
 
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@acc/api": "http://localhost:5174/src/acc-api.ts"
+    }
+  },
   build: {
     rollupOptions: {
       input: "src/acc-orders.ts",

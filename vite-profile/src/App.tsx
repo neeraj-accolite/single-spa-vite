@@ -2,17 +2,17 @@ import './style.css';
 import { useState } from 'react';
 import { CustomProps, ParcelConfig, ParcelProps } from 'single-spa';
 import Parcel from 'single-spa-react/parcel'
-import {getProfileDetails, Profile} from '@acc/api';
+import {getAllUsers, Profile} from '@acc/api';
 
 export default function Root(props:any) {
   const [isLoading, setLoading] = useState<Boolean>(false);
-  const [data, setData] = useState<Profile>(null);
+  const [data, setData] = useState<Profile[]>(null);
 
   const onFetchDetails = async ()=>{
     setLoading(true);
     setTimeout(async ()=>{
       //set time out added to get the loading effects 
-      const profileData = await getProfileDetails("https://reqres.in/api/users/5");
+      const profileData = await getAllUsers();
       setData(profileData.data);
       setLoading(false);
     },500);  
@@ -24,11 +24,11 @@ export default function Root(props:any) {
 
   return (
     <div id="profile">
-      <h1> Profile React Application </h1>
+      <h1> Profiles React Application </h1>
       {
         (data===null && !isLoading ) ?     
           <div id="detailsBtn">
-            <button onClick={onFetchDetails}>Load Profile Details</button>
+            <button onClick={onFetchDetails}>Load Profiles</button>
             <label id="value" >  (The details will be fetched from Utility Microfrontend)</label>
           </div>
         :
@@ -37,25 +37,29 @@ export default function Root(props:any) {
           isLoading?
           <div id="loader"></div>
           :
-            <div>
+          data?.map((user)=>{
+            return (
+            <div className='users'>
                 <div id="detailSection">
-                  <img src={data.avatar} />
+                  <img src={user.avatar} width={80} height={80} />
                 </div>
                 <div id="detailSection">
                 <label id="field">Name:
                   </label>
                   <label id="value">
-                  {data.first_name} {data.last_name}
+                  {user.first_name} {user.last_name}
                   </label>
                 </div>
                 <div id="detailSection">
                   <label id="field">Email:</label> 
-                  <label id="value">{data.email}</label>
+                  <label id="value">{user.email}</label>
                 </div>
                 <div id="detailSection">
-                  <a href='/address'>Go to Address Page </a>
+                  <a href={`/orders/${user.id}`}>Open Orders</a>
               </div>
-           </div>  
+             </div>  
+            )
+          })
           }
         </div>
       }

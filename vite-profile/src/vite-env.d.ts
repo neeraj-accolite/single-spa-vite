@@ -7,7 +7,7 @@ declare module "@acc/api" {
         first_name: string;
         last_name: string;
     }
-    const getProfileDetails: (url: string) => Promise<{
-        data: Profile;
+    const getAllUsers: () => Promise<{
+        data: Profile[];
     }>;
 }
